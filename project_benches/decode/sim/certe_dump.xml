@@ -1,0 +1,48 @@
+<certe_dump>
+  <instance type=" test_top "> 
+     uvm_test_top 
+  
+     <instance type=" decode_in_agent "> 
+        dec_agent 
+  
+        <instance type=" decode_in_driver "> 
+           decode_drvr 
+  
+           <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+              rsp_port 
+           </port> 
+  
+           <port if_type = "uvm_seq_item_pull_port" txn_type = "anonymous"> 
+              seq_item_port 
+              <connection>  uvm_test_top.dec_agent.decode_sqcnr.seq_item_export  </connection> 
+           </port> 
+        </instance> 
+  
+  
+        <instance type=" decode_in_monitor "> 
+           decode_mntr 
+  
+           <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+              analysis_port_monitor 
+           </port> 
+        </instance> 
+  
+  
+        <instance type=" decode_in_sequencer "> 
+           decode_sqcnr 
+  
+           <export if_type = "uvm_analysis_export" txn_type = "anonymous"> 
+              rsp_export 
+              <connection>  uvm_test_top.dec_agent.decode_sqcnr.sqr_rsp_analysis_fifo.analysis_export  </connection> 
+           </export> 
+  
+           <imp if_type = "uvm_seq_item_pull_imp" txn_type = "anonymous"> 
+              seq_item_export 
+           </imp> 
+        </instance> 
+  
+     </instance> 
+  
+  </instance> 
+  
+  </certe_dump>
